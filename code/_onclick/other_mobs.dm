@@ -240,6 +240,10 @@
 				WEREWOLF INFECTION VIA BITE
 			*/
 			if(istype(user.dna.species, /datum/species/werewolf))
+				if(user.mind)
+					var/datum/antagonist/werewolf/lesser/WW = user.mind.has_antag_datum(/datum/antagonist/werewolf/lesser)
+					if(WW.wretch_antag == 1)
+						return
 				if(HAS_TRAIT(src, TRAIT_SILVER_BLESSED))
 					to_chat(user, span_warning("BLEH! [bite_victim] tastes of SILVER! My gift cannot take hold."))
 				else
